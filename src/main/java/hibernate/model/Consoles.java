@@ -4,26 +4,26 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Consoles", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"console_name","model"})})
+        @UniqueConstraint(columnNames = {"id", "nazwa_konsoli","model", "wersja", "wydawca", "rok_wydania"})})
 public class Consoles {
 
     @Id @GeneratedValue
     @Column(name = "id")
     private int id;
 
-    @Column(name = "console_name")
+    @Column(name = "nazwa_konsoli")
     private String consolname;
 
     @Column(name = "model")
     private String model;
 
-    @Column(name = "version")
+    @Column(name = "wersja")
     private String version;
 
-    @Column(name = "developer")
+    @Column(name = "wydawca")
     private String developer;
 
-    @Column(name = "year")
+    @Column(name = "rok_wydania")
     private int year;
 
     public Consoles() {}

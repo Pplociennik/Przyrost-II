@@ -23,7 +23,7 @@ public class Queries {
 
     public List<Consoles> getConsoleByName(String name) {
         TypedQuery<Consoles> query = entityManager.createQuery(
-                "SELECT c FROM Consoles c WHERE c.Consolename LIKE :name", Consoles.class);
+                "SELECT c FROM Consoles c WHERE c.consolename LIKE :name", Consoles.class);
         return query.setParameter("name", name).getResultList();
     }
 
