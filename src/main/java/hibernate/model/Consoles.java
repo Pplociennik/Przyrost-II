@@ -3,9 +3,10 @@ package hibernate.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Consoles", uniqueConstraints = {
+@Table(name = "consoles", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"id", "nazwa_konsoli","model", "wersja", "wydawca", "rok_wydania"})})
 public class Consoles {
+    public Consoles() {}
 
     @Id @GeneratedValue
     @Column(name = "id")
@@ -26,7 +27,7 @@ public class Consoles {
     @Column(name = "rok_wydania")
     private int year;
 
-    public Consoles() {}
+    public Consoles(int id, String nazwa, String model, String wersja, String wydawca, String rok) {}
 
     public int getId() {
         return id;

@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 
 
@@ -79,14 +81,15 @@ public class Manager {
 
 
 
-         // entityManager.persist(con);
+//          entityManager.persist(con);
 //
 //
             //Consoles consoles = entityManager.find(Consoles.class, con.getId());
 
-
-            Query query = entityManager.createQuery("SELECT e FROM Consoles e");
-            List<Consoles> consolesList = query.getResultList();
+           // Statement stat = null;
+//            Query query = entityManager.createQuery("SELECT e FROM Consoles e");
+//            List<Consoles> consolesList = query.getResultList();
+           // ResultSet result = stat.executeQuery("SELECT consolname FROM Consoles");
 
 //            entityManager.remove(con);
 
