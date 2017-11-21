@@ -2,9 +2,7 @@ package query;
 
 import hibernate.model.Consoles;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 
@@ -22,10 +20,25 @@ public class Queries {
 
 
     public List<Consoles> getConsoleByName(String name) {
+        System.out.println("Start");
+
+        EntityManager entityManager = null;
+
+        EntityManagerFactory entityManagerFactory = null;
+
+
+            //taka nazwa jak w persistence.xml
+            entityManagerFactory = Persistence.createEntityManagerFactory("hibernate-dynamic");
+            //utworz entityManagera
+            entityManager = entityManagerFactory.createEntityManager();
+
+            //rozpocznij transakcje
+            entityManager.getTransaction().begin();
         TypedQuery<Consoles> query = entityManager.createQuery(
                 "SELECT c FROM Consoles c WHERE c.consolename LIKE :name", Consoles.class);
         return query.setParameter("name", name).getResultList();
     }
+
 
     public List<Consoles> getAllEmployeeByPage(int pagenr) {
         //calculate total number

@@ -1,6 +1,8 @@
 package hibernate.model;
 
 import hibernate.model.Consoles;
+import org.apache.log4j.BasicConfigurator;
+import org.hibernate.Session;
 import query.Queries;
 
 import javax.persistence.EntityManager;
@@ -13,6 +15,7 @@ import java.util.List;
 public class Manager {
 
     public static void main(String[] args) {
+        BasicConfigurator.configure();
 
         System.out.println("Start");
 
@@ -29,12 +32,14 @@ public class Manager {
             //rozpocznij transakcje
             entityManager.getTransaction().begin();
 
-            Consoles con = new Consoles();
-            con.setConsolname("Playstation");
-            con.setModel("4");
-            con.setVersion("Pro");
-            con.setDeveloper("Sony");
-            con.setYear(2016);
+//            Consoles con = new Consoles();
+//            con.setConsolname("Playstation");
+//            con.setModel("4");
+//            con.setVersion("Pro");
+//            con.setDeveloper("Sony");
+//            con.setYear(2016);
+
+
            // con.setId(1);
 
 //            Consoles con1 = new Consoles();
@@ -74,23 +79,21 @@ public class Manager {
 
 
 
-            entityManager.persist(con);
+         // entityManager.persist(con);
+//
+//
+            //Consoles consoles = entityManager.find(Consoles.class, con.getId());
 
 
-            Consoles consoles = entityManager.find(Consoles.class, con.getId());
-
-
-            //Query query = entityManager.createQuery("SELECT nazwa FROM Consoles WHERE rok_wydania=2006");
-            //List<Consoles> consolesList = query.getResultList();
+            Query query = entityManager.createQuery("SELECT e FROM Consoles e");
+            List<Consoles> consolesList = query.getResultList();
 
 //            entityManager.remove(con);
 
-
-            System.out.println("Konsola " + consoles.getId() + " " + consoles.getConsoleName() +     consoles.getModel() + " " + consoles.getVersion() + " " + consoles.getDeveloper() + " " + consoles.getYear());
-
+//
+           // System.out.println("Konsola " + consoles.getId() + " " + consoles.getConsoleName() +     consoles.getModel() + " " + consoles.getVersion() + " " + consoles.getDeveloper() + " " + consoles.getYear());
             //zakoncz transakcje
             entityManager.getTransaction().commit();
-
             System.out.println("Done");
 
             entityManager.close();
