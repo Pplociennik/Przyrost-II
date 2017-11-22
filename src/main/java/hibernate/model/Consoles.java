@@ -13,7 +13,7 @@ public class Consoles {
     private int id;
 
     @Column(name = "nazwa_konsoli")
-    private String consolname;
+    private String consoleName;
 
     @Column(name = "model")
     private String model;
@@ -25,7 +25,7 @@ public class Consoles {
     private String developer;
 
     @Column(name = "rok_wydania")
-    private int year;
+    private String year;
 
     public Consoles(int id, String nazwa, String model, String wersja, String wydawca, String rok) {}
 
@@ -38,11 +38,11 @@ public class Consoles {
     }
 
     public String getConsoleName() {
-        return consolname;
+        return consoleName;
     }
 
     public void setConsolname( String consolname ) {
-        this.consolname = consolname;
+        this.consoleName = consoleName;
     }
 
     public String getModel() {
@@ -69,11 +69,11 @@ public class Consoles {
         this.developer = developer;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear( int year ) {
+    public void setYear( String year ) {
         this.year = year;
     }
 }

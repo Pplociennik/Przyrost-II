@@ -1,5 +1,6 @@
 package hibernate.model;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.apache.log4j.BasicConfigurator;
@@ -84,11 +85,36 @@ public class Main {
                 }
 
             else if (read == 5) {
+                ObjectMapper mapperx = new ObjectMapper();
+                List<Consoles> map = mapperx.readValue(new File("C:\\Users\\Win10\\Desktop\\JSON2.json"), new TypeReference<List<Consoles>>() {});
 
+                Consoles conj = new Consoles();
+                for(int i = 0; i < map.size(); i++) {
+                    conj.setConsolname(map.get(i).getConsoleName());
+                    conj.setDeveloper(map.get(i).getDeveloper());
+                    conj.setModel(map.get(i).getModel());
+                    conj.setVersion(map.get(i).getVersion());
+                    conj.setYear(map.get(i).getYear());
+                }
+                entityManager.persist(conj);
+                entityManager.getTransaction().commit();
+                entityManager.merge(conj);
             }
 
             else if (read == 6) {
+                XmlMapper mapperx2 = new XmlMapper();
+                List<Consoles> map2 = mapperx2.readValue(new File("C:\\Users\\Win10\\Desktop\\XML2.xml"), new TypeReference<List<Consoles>>() {});
 
+                Consoles conx = new Consoles();
+                for(int i = 0; i < map2.size(); i++) {
+                    conx.setConsolname(map2.get(i).getConsoleName());
+                    conx.setDeveloper(map2.get(i).getDeveloper());
+                    conx.setModel(map2.get(i).getModel());
+                    conx.setVersion(map2.get(i).getVersion());
+                    conx.setYear(map2.get(i).getYear());
+                }
+
+                entityManager.merge(conx);
             }
 
             else if (read == 7) {
