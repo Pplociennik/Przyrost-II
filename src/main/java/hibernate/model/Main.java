@@ -41,6 +41,9 @@ public class Main {
             System.out.println("4. Zapisz wszystko do pliku XML");
             System.out.println("5. Wyslij JSON do bazy danych");
             System.out.println("6. Wyslij XML do bazy danych");
+            System.out.println("7. Wyswietl konsole Playstation");
+            System.out.println("8. Wyswietl konsole Microsoftu");
+            System.out.println("9. Wyswietl konsole Sony");
 
             Scanner reader = new Scanner(System.in);
             int read = reader.nextInt();
@@ -48,12 +51,14 @@ public class Main {
             if (read == 1) {
                 Query query2 = entityManager.createQuery("SELECT k FROM Consoles k WHERE consolname='Xbox'");
                 List<Consoles> console = query2.getResultList();
+                System.out.println("ID " + "Wydawca " + "Nazwa " + "Model " + "Wersja " + "Data Wydania");
                 for (int i = 0; i <= console.size(); i++) {
                     System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
                 }
             } else if (read == 2) {
                 Query query = entityManager.createQuery("SELECT k FROM Consoles k");
                 List<Consoles> console = query.getResultList();
+                System.out.println("ID " + "Wydawca " + "Nazwa " + "Model " + "Wersja " + "Data Wydania");
                 for (int i = 0; i <= console.size(); i++) {
                     System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
                 }
@@ -85,6 +90,38 @@ public class Main {
             else if (read == 6) {
 
             }
+
+            else if (read == 7) {
+                Query query2 = entityManager.createQuery("SELECT k FROM Consoles k WHERE consolname='Playstation'");
+                List<Consoles> console = query2.getResultList();
+                System.out.println("ID " + "Wydawca " + "Nazwa " + "Model " + "Wersja " + "Data Wydania");
+                for (int i = 0; i <= console.size(); i++) {
+                    System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
+                }
+            }
+
+            else if (read == 8)
+            {
+                Query query4 = entityManager.createQuery("SELECT k FROM Consoles k WHERE developer='Microsoft'");
+                List<Consoles> console = query4.getResultList();
+                System.out.println("ID " + "Wydawca " + "Nazwa  " + "Model " + "Wersja " + "Data Wydania");
+                for (int i = 0; i <= console.size(); i++) {
+                    System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
+                }
+            }
+
+            else if(read == 9)
+            {
+                Query query5 = entityManager.createQuery("SELECT k FROM Consoles k WHERE developer='Sony'");
+                List<Consoles> console = query5.getResultList();
+                System.out.println("ID " + "Wydawca " + "Nazwa " + "Model " + "Wersja " + "Data Wydania");
+                for (int i = 0; i <= console.size(); i++) {
+                    System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
+                }
+            }
+
+            else
+            {}
 
 
 
