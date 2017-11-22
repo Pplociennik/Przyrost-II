@@ -39,6 +39,8 @@ public class Main {
             System.out.println("2. Wyswietl wszystkie konsole");
             System.out.println("3. Zapisz wszystko do pliku JSON");
             System.out.println("4. Zapisz wszystko do pliku XML");
+            System.out.println("5. Wyslij JSON do bazy danych");
+            System.out.println("6. Wyslij XML do bazy danych");
 
             Scanner reader = new Scanner(System.in);
             int read = reader.nextInt();
@@ -75,6 +77,14 @@ public class Main {
                 XmlMapper xmlMapper = new XmlMapper();
                 xmlMapper.writeValue(new File("C:\\Users\\Win10\\Desktop\\XML.xml"), console);
                 }
+
+            else if (read == 5) {
+
+            }
+
+            else if (read == 6) {
+
+            }
 
 
 
