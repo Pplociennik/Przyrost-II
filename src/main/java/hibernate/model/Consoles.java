@@ -29,14 +29,14 @@ public class Consoles {
     @Column(name = "rok_wydania")
     private String year;
 
-//    @OneToOne(cascade = CascadeType.PERSIST)
-//    @JoinColumn(name = "Gracz", referencedColumnName = "id")
-//    Players players;
+
 
 
 
     public Consoles(int id, String nazwa, String model, String wersja, String wydawca, String rok) {
     }
+
+
 
     public int getId() {
         return id;

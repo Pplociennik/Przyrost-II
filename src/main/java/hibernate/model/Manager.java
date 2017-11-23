@@ -34,15 +34,22 @@ public class Manager {
             //rozpocznij transakcje
             entityManager.getTransaction().begin();
 
-//            Consoles con = new Consoles();
-//            con.setConsolname("Playstation");
-//            con.setModel("4");
-//            con.setVersion("Pro");
-//            con.setDeveloper("Sony");
-//            con.setYear(2016);
+            Consoles con = new Consoles();
+            con.setConsolname("Playstation");
+            con.setModel("4");
+            con.setVersion("Pro");
+            con.setDeveloper("Sony");
+            con.setYear("2016-10-29");
+
+            Players play = new Players();
+            play.setName("Tomasz");
+            play.setSurname("Gołąbek");
+            play.setCity("Poznań");
+            play.setBirth("1990-03-23");
 
 
-//          entityManager.persist(con);
+          entityManager.persist(con);
+          entityManager.persist(play);
 //
 //
             //Consoles consoles = entityManager.find(Consoles.class, con.getId());
