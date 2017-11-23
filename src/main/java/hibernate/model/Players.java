@@ -4,11 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "players", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"id", "imie","nazwisko", "miasto", "urodzenie", "posiadana_konsola"})})
+        @UniqueConstraint(columnNames = {"id", "imie", "nazwisko", "miasto", "urodzenie", "posiadana_konsola"})})
 public class Players {
-    public Players() {}
+    public Players() {
+    }
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
 
@@ -27,13 +29,14 @@ public class Players {
     @Column(name = "posiadana_konsola", nullable = false)
     private String cons;
 
-    public Players(int id, String imie, String nazwisko, String miasto, String urodzenie, String cons) {}
+    public Players(int id, String imie, String nazwisko, String miasto, String urodzenie, String cons) {
+    }
 
     public int getId() {
         return id;
     }
 
-    public void setId( int id ) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -41,7 +44,7 @@ public class Players {
         return name;
     }
 
-    public void setName( String name ) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -49,7 +52,7 @@ public class Players {
         return surname;
     }
 
-    public void setSurname( String surname ) {
+    public void setSurname(String surname) {
         this.surname = surname;
     }
 
@@ -57,7 +60,7 @@ public class Players {
         return city;
     }
 
-    public void setCity( String city ) {
+    public void setCity(String city) {
         this.city = city;
     }
 

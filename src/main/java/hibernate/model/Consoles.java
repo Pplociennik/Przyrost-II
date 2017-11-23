@@ -4,11 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "consoles", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"id", "nazwa_konsoli","model", "wersja", "wydawca", "rok_wydania"})})
+        @UniqueConstraint(columnNames = {"id", "nazwa_konsoli", "model", "wersja", "wydawca", "rok_wydania"})})
 public class Consoles {
-    public Consoles() {}
+    public Consoles() {
+    }
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
 
@@ -27,13 +29,14 @@ public class Consoles {
     @Column(name = "rok_wydania")
     private String year;
 
-    public Consoles(int id, String nazwa, String model, String wersja, String wydawca, String rok) {}
+    public Consoles(int id, String nazwa, String model, String wersja, String wydawca, String rok) {
+    }
 
     public int getId() {
         return id;
     }
 
-    public void setId( int id ) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -41,7 +44,7 @@ public class Consoles {
         return consoleName;
     }
 
-    public void setConsolname( String consolname ) {
+    public void setConsolname(String consolname) {
         this.consoleName = consoleName;
     }
 
@@ -49,7 +52,7 @@ public class Consoles {
         return model;
     }
 
-    public void setModel( String model ) {
+    public void setModel(String model) {
         this.model = model;
     }
 
@@ -57,7 +60,7 @@ public class Consoles {
         return version;
     }
 
-    public void setVersion( String version ) {
+    public void setVersion(String version) {
         this.version = version;
     }
 
@@ -73,7 +76,7 @@ public class Consoles {
         return year;
     }
 
-    public void setYear( String year ) {
+    public void setYear(String year) {
         this.year = year;
     }
 }
