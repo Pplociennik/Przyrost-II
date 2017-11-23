@@ -20,24 +20,44 @@ import static query.Queries.*;
 
 public class Main {
 
+    public static List<Consoles> getAllConsolesByPage(int pagenr) {
+        BasicConfigurator.configure();
+        EntityManager entityManager = null;
+        EntityManagerFactory entityManagerFactory = null;
+        entityManagerFactory = Persistence.createEntityManagerFactory("hibernate-dynamic");
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        Query querypage = entityManager.createQuery("SELECT COUNT(c.id) FROM Consoles c");
+        int pageNumber = 1;
+        int pageSize = 10;
+        querypage.setFirstResult((pageNumber - 1) * pageSize);
+        querypage.setMaxResults(pageSize);
+        List<Consoles> consolespage = querypage.getResultList();
+        for (int i = 0; i < consolespage.size(); i++) {
+            System.out.println(consolespage.get(i).getId() + " " + consolespage.get(i).getDeveloper() + " " + consolespage.get(i).getConsoleName() + " " + consolespage.get(i).getModel() + " " + consolespage.get(i).getVersion() + " " + consolespage.get(i).getYear());
+        }
+        return consolespage;
+    }
 
     public static void main(String[] args) {
 //        BasicConfigurator.configure();
 //
-//        System.out.println("Start");
-//
-//        EntityManager entityManager = null;
-//
-//        EntityManagerFactory entityManagerFactory = null;
-//
-//        try {
-//            //taka nazwa jak w persistence.xml
-//            entityManagerFactory = Persistence.createEntityManagerFactory("hibernate-dynamic");
-//            //utworz entityManagera
-//            entityManager = entityManagerFactory.createEntityManager();
-//
-//            //rozpocznij transakcje
-//            entityManager.getTransaction().begin();
+        System.out.println("Start");
+
+        EntityManager entityManager = null;
+
+        EntityManagerFactory entityManagerFactory = null;
+
+        try {
+            //taka nazwa jak w persistence.xml
+            entityManagerFactory = Persistence.createEntityManagerFactory("hibernate-dynamic");
+            //utworz entityManagera
+            entityManager = entityManagerFactory.createEntityManager();
+
+            //rozpocznij transakcje
+            entityManager.getTransaction().begin();
 
         System.out.println("WYBIERZ OPCJE");
         System.out.println("1. Wyswietl konsole Xbox");
@@ -49,6 +69,7 @@ public class Main {
         System.out.println("7. Wyswietl konsole Playstation");
         System.out.println("8. Wyswietl konsole Microsoftu");
         System.out.println("9. Wyswietl konsole Sony");
+        System.out.println("0. Wyswietl wszystkie konsole (zapytanie stronnicowane)");
 
         Scanner reader = new Scanner(System.in);
         int read = reader.nextInt();
@@ -76,16 +97,15 @@ public class Main {
 
             query9();
         } else {
-            Queries q = new Queries();
-            q.getAllConsolesByPage(1);
+          getAllConsolesByPage(1);
         }
 
 
-//        } catch (Throwable ex) {
-//            System.err.println("Initial SessionFactory creation failed." + ex);
-//        } finally {
-//            entityManagerFactory.close();
-//        }
+        } catch (Throwable ex) {
+            System.err.println("Initial SessionFactory creation failed." + ex);
+        } finally {
+            entityManagerFactory.close();
+        }
     }
 }
 

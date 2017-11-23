@@ -26,8 +26,9 @@ public class Players {
     @Column(name = "urodzenie", nullable = false)
     private String birth;
 
-    @Column(name = "posiadana_konsola", nullable = false)
-    private String cons;
+//    @OneToMany(cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "Posiadana_konsola", referencedColumnName = "id")
+//    Consoles consoles;
 
     public Players(int id, String imie, String nazwisko, String miasto, String urodzenie, String cons) {
     }
