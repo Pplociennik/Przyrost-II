@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Przyrost-II" />
         <module name="Przyrost-II 2" />
+        <module name="Przyrost-II-3" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Przyrost-II" target="1.8" />
       <module name="Przyrost-II 2" target="1.8" />
+      <module name="Przyrost-II-3" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

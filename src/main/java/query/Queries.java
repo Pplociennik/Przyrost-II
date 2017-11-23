@@ -15,11 +15,7 @@ import java.util.List;
 
 public class Queries {
 
-    EntityManager entityManager;
 
-    public Queries(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
 
     public Queries() {
 
@@ -35,7 +31,7 @@ public class Queries {
         entityManager.getTransaction().begin();
     }
 
-    public static void query1() {
+    public static List<Consoles> query1() {
         BasicConfigurator.configure();
         EntityManager entityManager = null;
         EntityManagerFactory entityManagerFactory = null;
@@ -50,10 +46,12 @@ public class Queries {
         for (int i = 0; i <= console.size(); i++) {
             System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
         }
+        entityManager.close();
         System.out.println("DONE! HAVE A NICE DAY! :)");
+        return console;
     }
 
-    public static void query2() {
+    public static List<Consoles> query2() {
         BasicConfigurator.configure();
         EntityManager entityManager = null;
         EntityManagerFactory entityManagerFactory = null;
@@ -65,11 +63,13 @@ public class Queries {
         Query query = entityManager.createQuery("SELECT k FROM Consoles k");
         List<Consoles> console = query.getResultList();
         System.out.println("ID " + "Wydawca " + "Nazwa " + "Model " + "Wersja " + "Data Wydania");
-        for (int i = 0; i <= console.size(); i++) {
+        for (int i = 0; i <= console.size()+2; i++) {
             System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
         }
         System.out.println("DONE! HAVE A NICE DAY! :)");
+        return console;
     }
+
 
     public static void query3() {
         BasicConfigurator.configure();
@@ -86,7 +86,7 @@ public class Queries {
 
         //Object to JSON in file
         try {
-            mapper.writeValue(new File("C:\\Users\\Win10\\Desktop\\JSON.json"), console);
+            mapper.writeValue(new File("JSON.json"), console);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,7 +106,7 @@ public class Queries {
         List<Consoles> console = query.getResultList();
         XmlMapper xmlMapper = new XmlMapper();
         try {
-            xmlMapper.writeValue(new File("C:\\Users\\Win10\\Desktop\\XML.xml"), console);
+            xmlMapper.writeValue(new File("XML.xml"), console);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -125,7 +125,7 @@ public class Queries {
         ObjectMapper mapperx = new ObjectMapper();
         List<Consoles> map = null;
         try {
-            map = mapperx.readValue(new File("C:\\Users\\Win10\\Desktop\\JSON2.json"), new TypeReference<List<Consoles>>() {
+            map = mapperx.readValue(new File("JSON2.json"), new TypeReference<List<Consoles>>() {
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -157,7 +157,7 @@ public class Queries {
         XmlMapper mapperx2 = new XmlMapper();
         List<Consoles> map2 = null;
         try {
-            map2 = mapperx2.readValue(new File("C:\\Users\\Win10\\Desktop\\XML2.xml"), new TypeReference<List<Consoles>>() {
+            map2 = mapperx2.readValue(new File("C:\\Users\\Win10\\Desktop\\XML.xml"), new TypeReference<List<Consoles>>() {
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -176,7 +176,7 @@ public class Queries {
         System.out.println("DONE! HAVE A NICE DAY! :)");
     }
 
-    public static void query7() {
+    public static List<Consoles>query7() {
         BasicConfigurator.configure();
         EntityManager entityManager = null;
         EntityManagerFactory entityManagerFactory = null;
@@ -192,9 +192,10 @@ public class Queries {
             System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
         }
         System.out.println("DONE! HAVE A NICE DAY! :)");
+        return console;
     }
 
-    public static void query8() {
+    public static List<Consoles> query8() {
         BasicConfigurator.configure();
         EntityManager entityManager = null;
         EntityManagerFactory entityManagerFactory = null;
@@ -209,10 +210,11 @@ public class Queries {
         for (int i = 0; i <= console.size(); i++) {
             System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
         }
-        System.out.println("DONE! HAVE A NICE DAY! :)");
+        return console;
+        //   System.out.println("DONE! HAVE A NICE DAY! :)");
     }
 
-    public static void query9() {
+    public static List<Consoles> query9() {
         BasicConfigurator.configure();
         EntityManager entityManager = null;
         EntityManagerFactory entityManagerFactory = null;
@@ -228,34 +230,13 @@ public class Queries {
             System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
         }
         System.out.println("DONE! HAVE A NICE DAY! :)");
+        return console;
     }
 
-
-    public List<Consoles> getAllConsolesByPage(int pagenr) {
-        //calculate total number
-        Query queryTotal = entityManager.createQuery
-                ("Select count(f) from Consoles f");
-        long countResult = (long) queryTotal.getSingleResult();
-
-        //create query
-        Query query = entityManager.createQuery("Select e FROM Consoles e");
-        //set pageSize
-        int pageSize = 10;
-        //calculate number of pages
-        int pageNumber = (int) ((countResult / pageSize) + 1);
-
-        if (pagenr > pageNumber) pagenr = pageNumber;
-        query.setFirstResult((pagenr - 1) * pageSize);
-        query.setMaxResults(pageSize);
-
-        List<Consoles> c = query.getResultList();
-        for (int i = 0; i <= c.size(); i++) {
-            System.out.println(c.get(i).getId() + " " + c.get(i).getDeveloper() + " " + c.get(i).getConsoleName() + " " + c.get(i).getModel() + " " + c.get(i).getVersion() + " " + c.get(i).getYear());
-        }
-
-        return query.getResultList();
-    }
 
 
 }
+
+
+
 
