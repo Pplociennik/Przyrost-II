@@ -87,7 +87,7 @@ public class Queries {
 
         //Object to JSON in file
         try {
-            mapper.writeValue(new File("JSON.json"), console);
+            mapper.writeValue(new File("J:\\Desktop\\JSON.json"), console);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,7 +108,7 @@ public class Queries {
         List<Consoles> console = query.getResultList();
         XmlMapper xmlMapper = new XmlMapper();
         try {
-            xmlMapper.writeValue(new File("XML.xml"), console);
+            xmlMapper.writeValue(new File("J:\\Desktop\\XML.xml"), console);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -128,7 +128,7 @@ public class Queries {
         ObjectMapper mapperx = new ObjectMapper();
         List<Consoles> map = null;
         try {
-            map = mapperx.readValue(new File("JSON2.json"), new TypeReference<List<Consoles>>() {
+            map = mapperx.readValue(new File("J:\\Desktop\\JSON2.json"), new TypeReference<List<Consoles>>() {
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -160,7 +160,7 @@ public class Queries {
         XmlMapper mapperx2 = new XmlMapper();
         List<Consoles> map2 = null;
         try {
-            map2 = mapperx2.readValue(new File("XML2.xml"), new TypeReference<List<Consoles>>() {
+            map2 = mapperx2.readValue(new File("J:\\Desktop\\XML2.xml"), new TypeReference<List<Consoles>>() {
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -188,7 +188,7 @@ public class Queries {
 
         entityManager.getTransaction().begin();
 
-        Query query2 = entityManager.createQuery("SELECT k FROM Consoles k WHERE consolname='Playstation'");
+        Query query2 = entityManager.createQuery("SELECT k FROM Consoles k WHERE consoleName='Playstation'");
         List<Consoles> console = query2.getResultList();
         System.out.println("ID " + "Wydawca " + "Nazwa " + "Model " + "Wersja " + "Data Wydania");
         for (int i = 0; i <= console.size(); i++) {
