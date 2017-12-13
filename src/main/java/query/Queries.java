@@ -44,7 +44,7 @@ public class Queries {
         Query query2 = entityManager.createQuery("SELECT k FROM Consoles k WHERE consoleName='Xbox'");
         List<Consoles> console = query2.getResultList();
         System.out.println("ID " + "Wydawca " + "Nazwa " + "Model " + "Wersja " + "Data Wydania");
-        for (int i = 0; i <= console.size(); i++) {
+        for (int i = 0; i < console.size(); i++) {
             System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
         }
         entityManager.close();
@@ -64,7 +64,7 @@ public class Queries {
         Query query = entityManager.createQuery("SELECT k FROM Consoles k");
         List<Consoles> console = query.getResultList();
         System.out.println("ID " + "Wydawca " + "Nazwa " + "Model " + "Wersja " + "Data Wydania");
-        for (int i = 0; i <= console.size()+2; i++) {
+        for (int i = 0; i < console.size(); i++) {
             System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
         }
         System.out.println("DONE! HAVE A NICE DAY! :)");
@@ -191,7 +191,7 @@ public class Queries {
         Query query2 = entityManager.createQuery("SELECT k FROM Consoles k WHERE consoleName='Playstation'");
         List<Consoles> console = query2.getResultList();
         System.out.println("ID " + "Wydawca " + "Nazwa " + "Model " + "Wersja " + "Data Wydania");
-        for (int i = 0; i <= console.size(); i++) {
+        for (int i = 0; i < console.size(); i++) {
             System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
         }
         System.out.println("DONE! HAVE A NICE DAY! :)");
@@ -210,7 +210,7 @@ public class Queries {
         Query query4 = entityManager.createQuery("SELECT k FROM Consoles k WHERE developer='Microsoft'");
         List<Consoles> console = query4.getResultList();
         System.out.println("ID " + "Wydawca " + "Nazwa  " + "Model " + "Wersja " + "Data Wydania");
-        for (int i = 0; i <= console.size(); i++) {
+        for (int i = 0; i < console.size(); i++) {
             System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
         }
         return console;
@@ -229,7 +229,7 @@ public class Queries {
         Query query5 = entityManager.createQuery("SELECT k FROM Consoles k WHERE developer='Sony'");
         List<Consoles> console = query5.getResultList();
         System.out.println("ID " + "Wydawca " + "Nazwa " + "Model " + "Wersja " + "Data Wydania");
-        for (int i = 0; i <= console.size(); i++) {
+        for (int i = 0; i < console.size(); i++) {
             System.out.println(console.get(i).getId() + " " + console.get(i).getDeveloper() + " " + console.get(i).getConsoleName() + " " + console.get(i).getModel() + " " + console.get(i).getVersion() + " " + console.get(i).getYear());
         }
         System.out.println("DONE! HAVE A NICE DAY! :)");
